@@ -37,10 +37,6 @@ VIProductVersion "${version}"
 # http://nsis.sourceforge.net/Docs/Chapter2.html#\2.3.6
 
 ;--------------------------------
-Var sysdrive
-var debug
-
-;--------------------------------
 ;Interface Configuration
 
 !define MUI_WELCOMEPAGE_TITLE "Welcome to the Streambox setup wizard."
@@ -65,71 +61,53 @@ var debug
 ; Functions
 
 Function .onInit
-	StrCpy $sysdrive $WINDIR 1
-
-	##############################
-	# did we call with "/debug"
-	StrCpy $debug 0
-	${GetParameters} $0
-	ClearErrors
-	${GetOptions} $0 '/debug' $1
-	${IfNot} ${Errors}
-		StrCpy $debug 1
-		SetAutoClose false #leave installer window open when /debug
-	${EndIf}
-	ClearErrors
-
+	SetAutoClose true
 FunctionEnd
 
 Section section1 section_section1
 	SetShellVarContext current
-	SetOutPath '$DOCUMENTS\${name}'
+	SetOutPath '$EXEDIR\mdt\scripts'
 
 	SetOverwrite off
 	File wget.exe
 	File 7za.exe
 	SetOverwrite on
 	ExpandEnvStrings $0 %COMSPEC%
-	exec '"$0" /k cd "$DOCUMENTS\${name}" && start .'
+	exec '"$0" /k cd "$EXEDIR\mdt" && start .'
 
 	# ##############################
 	# ADK
 	# ##############################
-	nsExec::ExecToLog '"wget.exe" --timestamping "http://download.microsoft.com/download/9/9/F/99F5E440-5EB5-4952-9935-B99662C3DF70/adk/adksetup.exe"'
 
-# http://msdn.microsoft.com/en-us/library/windows/hardware/hh825494.aspx#InstallingNonNetworked
-#	nsExec::ExecToLog '"adksetup.exe" /quiet /installpath /features +'
-	exec '"adksetup.exe" /quiet /features +'
-	ExpandEnvStrings $0 %TEMP%
-	CreateShortCut '$DOCUMENTS\${name}\adksetup_log.lnk' '$0\adk'
-
-	# ##############################
-	# IBW and toolkit
-	# ##############################
-
-	File urls.txt
-	FileOpen $1 getbits1.bat  w
-	FileWrite $1 'wget.exe --timestamping --input-file urls.txt$\r$\n'
-	FileWrite $1 '7za.exe e -y -o. "MDT 2013 Documentation.zip"$\r$\n'
-	FileClose $1
 	ExpandEnvStrings $0 %COMSPEC%
-	exec '"$0" /c start /D "$DOCUMENTS\${name}" getbits1.bat && exit'
+	ExpandEnvStrings $1 %TEMP%
 
-	FileOpen $1 getbits2.bat  w
-	FileWrite $1 'wget.exe --timestamping --input-file urls2.txt$\r$\n'
-	${If} ${RunningX64}
-		File '/oname=$DOCUMENTS\${name}\urls2.txt' urls64bit.txt
-		FileWrite $1 '"Standard 7 SP1 64bit IBW.part1.exe" -s -d "$DOCUMENTS\${name}"$\r$\n'
-	${Else}
-		File '/oname=$DOCUMENTS\${name}\urls2.txt' urls32bit.txt
-		FileWrite $1 '"Standard 7 SP1 Toolkit.part01.exe" -s -d "$DOCUMENTS\${name}"$\r$\n'
-	${EndIf}
-	FileClose $1
-	ExpandEnvStrings $0 %COMSPEC%
-	exec '"$0" /c start /D "$DOCUMENTS\${name}" getbits2.bat && exit'
+	File urls_win7pro.txt
+	File urls_win7pro.bat
+	exec '"$0" /c start /D "$EXEDIR\mdt\scripts" urls_win7pro.bat && exit'
+
+	File urls_adk.bat
+	File urls_adk.txt
+	exec '"$0" /c start /D "$EXEDIR\mdt\scripts" urls_adk.bat && exit'
+	CreateShortCut '$EXEDIR\mdt\scripts\adksetup_log.lnk' '$1\adk'
+
+	File urls_mdt.bat
+	File urls_mdt.txt
+	exec '"$0" /c start /D "$EXEDIR\mdt\scripts" urls_mdt.bat && exit'
+
+	File urls_ws7e.bat
+	File urls_ws7e.txt
+	exec '"$0" /c start /D "$EXEDIR\mdt\scripts" urls_ws7e.bat && exit'
+
+	File urls_ws7e_64bit.bat
+	File urls_ws7e_64bit.txt
+	exec '"$0" /c start /D "$EXEDIR\mdt\scripts" urls_ws7e_64bit.bat && exit'
+
+	File urls_ws7e_toolkit.bat
+	File urls_ws7e_toolkit.txt
+	exec '"$0" /c start /D "$EXEDIR\mdt\scripts" urls_ws7e_toolkit.bat && exit'
 
 SectionEnd
-
 
 # Emacs vars
 # Local Variables: ***
