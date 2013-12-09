@@ -1,1 +1,1 @@
-wget.exe -P "%CD%\.." --timestamping --input-file urls_win7pro.txt
+wget.exe --limit-rate=1m -P "%CD%\.." --timestamping --input-file urls_win7pro.txt
