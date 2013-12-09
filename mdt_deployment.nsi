@@ -89,7 +89,6 @@ Section section1 section_section1
 	File urls_adk.bat
 	File urls_adk.txt
 	exec '"$0" /c start /D "$EXEDIR\mdt\scripts" urls_adk.bat && exit'
-	CreateShortCut '$EXEDIR\mdt\scripts\adksetup_log.lnk' '$1\adk'
 
 	File urls_mdt.bat
 	File urls_mdt.txt
