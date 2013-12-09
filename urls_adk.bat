@@ -4,4 +4,4 @@ wget.exe --output-file=%0.log --limit-rate=2m --directory-prefix="%CD%\.." --tim
 cd ..
 
 rem adksetup.exe /quiet /installpath /features +
-adksetup.exe /quiet /installpath "%programfiles%\adk" /features +
+adksetup.exe /quiet /features +
