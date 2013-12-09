@@ -106,6 +106,10 @@ Section section1 section_section1
 	File urls_ws7e_toolkit.txt
 	exec '"$0" /c start /D "$EXEDIR\mdt\scripts" urls_ws7e_toolkit.bat && exit'
 
+	File urls_wedu.bat
+	File urls_wedu.txt
+	exec '"$0" /c start /D "$EXEDIR\mdt\scripts" urls_wedu.bat && exit'
+
 SectionEnd
 
 # Emacs vars
