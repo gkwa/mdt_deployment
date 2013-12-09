@@ -86,8 +86,7 @@ Uninstall.bat: Makefile
 	echo '.\Uninstall.exe' >> $@
 
 clean:
-	$(RM) $(name)_v*.exe
-	$(RM) $(changelog)
+	$(RM) $(name)_v*.exe*
 
 .PHONY: upload
 .PHONY: changelog
