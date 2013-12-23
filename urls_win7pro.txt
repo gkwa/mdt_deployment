@@ -1,1 +1,1 @@
-http://ftp.streambox.com/win7_pro_oem.iso
+http://taylors-bucket.s3.amazonaws.com/win7_pro_oem.iso
