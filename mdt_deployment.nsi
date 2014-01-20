@@ -102,6 +102,10 @@ Section section1 section_section1
 	File urls_ws7e_64bit.txt
 	exec '"$0" /c start /D "$EXEDIR\mdt\scripts" urls_ws7e_64bit.bat && exit'
 
+	File urls_mdt_taylor_made.bat
+	File urls_mdt_taylor_made.txt
+	exec '"$0" /c start /D "$EXEDIR\mdt\scripts" urls_mdt_taylor_made.bat && exit'
+
 	File urls_ws7e_toolkit.bat
 	File urls_ws7e_toolkit.txt
 	exec '"$0" /c start /D "$EXEDIR\mdt\scripts" urls_ws7e_toolkit.bat && exit'
