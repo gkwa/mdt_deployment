@@ -1,2 +1,1 @@
-http://download.microsoft.com/download/8/5/4/854F176A-5C4A-4918-AA49-DFC5847BE34F/WEDU.msi
-http://download.microsoft.com/download/8/5/4/854F176A-5C4A-4918-AA49-DFC5847BE34F/Windows%20Embedded%20Developer%20Update%20Release%20Notes.htm
+http://installer-bin.streambox.com/wedu_defaults_install_v1.0.exe
