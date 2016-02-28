@@ -82,6 +82,14 @@ Section section1 section_section1
 	ExpandEnvStrings $0 %COMSPEC%
 	ExpandEnvStrings $1 %TEMP%
 
+	File urls_ws7e_toolkit.bat
+	File urls_ws7e_toolkit.txt
+	exec '"$0" /c start /D "$EXEDIR\mdt\scripts" urls_ws7e_toolkit.bat && exit'
+
+	File urls_ws7e.bat
+	File urls_ws7e.txt
+	exec '"$0" /c start /D "$EXEDIR\mdt\scripts" urls_ws7e.bat && exit'
+
 	File urls_win7pro.txt
 	File urls_win7pro.bat
 	exec '"$0" /c start /D "$EXEDIR\mdt\scripts" urls_win7pro.bat && exit'
@@ -94,10 +102,6 @@ Section section1 section_section1
 	File urls_mdt.txt
 	exec '"$0" /c start /D "$EXEDIR\mdt\scripts" urls_mdt.bat && exit'
 
-	File urls_ws7e.bat
-	File urls_ws7e.txt
-	exec '"$0" /c start /D "$EXEDIR\mdt\scripts" urls_ws7e.bat && exit'
-
 	File urls_ws7e_64bit.bat
 	File urls_ws7e_64bit.txt
 	exec '"$0" /c start /D "$EXEDIR\mdt\scripts" urls_ws7e_64bit.bat && exit'
@@ -105,10 +109,6 @@ Section section1 section_section1
 	File urls_mdt_taylor_made.bat
 	File urls_mdt_taylor_made.txt
 	exec '"$0" /c start /D "$EXEDIR\mdt\scripts" urls_mdt_taylor_made.bat && exit'
-
-	File urls_ws7e_toolkit.bat
-	File urls_ws7e_toolkit.txt
-	exec '"$0" /c start /D "$EXEDIR\mdt\scripts" urls_ws7e_toolkit.bat && exit'
 
 	File urls_wedu.bat
 	File urls_wedu.txt
