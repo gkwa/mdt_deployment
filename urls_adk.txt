@@ -1,2 +1,2 @@
 # Windows Assessment and Deployment Kit (Windows ADK) for Windows 10
-http://download.microsoft.com/download/3/8/B/38BBCA6A-ADC9-4245-BCD8-DAA136F63C8B/adk/adksetup.exe
+http://download.microsoft.com/download/9/A/E/9AE69DD5-BA93-44E0-864E-180F5E700AB4/adk/adksetup.exe
