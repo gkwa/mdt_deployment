@@ -56,7 +56,7 @@ $(installer): mdt_deployment.nsi
 
 upload: $(installer)
 upload: $(changelog)
-	-robocopy . //10.0.2.10/Users/taylor $^
+	-robocopy . //10.0.2.218/Streambox/Users/taylor $^
 
 
 changelog: $(changelog)
