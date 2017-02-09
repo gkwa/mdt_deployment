@@ -99,7 +99,7 @@ http://taylors-bucket.s3.amazonaws.com/mdt.7z
 
 # Windows Embedded Standard 7 Service Pack 1 Evaluation Edition
 Start-Job -ScriptBlock {
-	@'
+	$urls = @'
 # Windows Embedded Standard 7 Service Pack 1 Evaluation Edition
 # http://www.microsoft.com/en-us/download/details.aspx?id=11887
 http://download.microsoft.com/download/1/B/5/1B5FDE63-DA91-4A22-A320-91E002DE1326/Standard_7SP1_32bit/Standard%207%20SP1%2032bit%20IBW.part1.exe
@@ -107,7 +107,9 @@ http://download.microsoft.com/download/1/B/5/1B5FDE63-DA91-4A22-A320-91E002DE132
 http://download.microsoft.com/download/1/B/5/1B5FDE63-DA91-4A22-A320-91E002DE1326/Standard_7SP1_32bit/Standard%207%20SP1%2032bit%20IBW.part3.rar
 http://download.microsoft.com/download/1/B/5/1B5FDE63-DA91-4A22-A320-91E002DE1326/Standard_7SP1_32bit/Standard%207%20SP1%2032bit%20IBW.part4.rar
 http://download.microsoft.com/download/1/B/5/1B5FDE63-DA91-4A22-A320-91E002DE1326/Standard_7SP1_32bit/Standard%207%20SP1%2032bit%20IBW.part5.rar
-'@ | Out-File -encoding ASCII urls_mdt_taylor_made.txt
+'@
+
+	Set-Content -Path "$pwd/urls_mdt_taylor_made.txt" -Value $urls
 
 	./wget --quiet --no-check-certificate --limit-rate=2m --directory-prefix=. --timestamping --input-file=urls_mdt_taylor_made.txt
 	./"Standard 7 SP1 32bit IBW.part1.exe" -s -d .
