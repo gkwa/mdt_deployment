@@ -17,13 +17,10 @@ http://download.microsoft.com/download/1/B/5/1B5FDE63-DA91-4A22-A320-91E002DE132
 http://download.microsoft.com/download/1/B/5/1B5FDE63-DA91-4A22-A320-91E002DE1326/Standard_7SP1_64bit/Standard%207%20SP1%2064bit%20IBW.part7.rar
 '@ | Out-File -encoding ASCII "$write_dir/urls_ws7e_64bit.txt"
 
-	$exe="$write_dir/wget.exe"
-	&$exe --quiet --no-check-certificate --timestamping --limit-rate=2m `
+	&"$write_dir/wget.exe" --quiet --no-check-certificate --timestamping --limit-rate=2m `
 	  --directory-prefix=$write_dir --input-file="$write_dir/urls_ws7e_64bit.txt"
-	$exe="$write_dir/Standard 7 SP1 64bit IBW.part1.exe"
-	&$exe -s -d .
-	$exe="$write_dir/7za.exe"
-	&$exe x -o"Standard 7 SP1 64bit IBW" "Standard 7 SP1 64bit IBW.iso"
+	&"$write_dir/Standard 7 SP1 64bit IBW.part1.exe" -s -d .
+	&"$write_dir/7za.exe" x -o"Standard 7 SP1 64bit IBW" "Standard 7 SP1 64bit IBW.iso"
 }
 
 $jobs += $j
@@ -47,13 +44,10 @@ http://download.microsoft.com/download/1/B/5/1B5FDE63-DA91-4A22-A320-91E002DE132
 http://download.microsoft.com/download/1/B/5/1B5FDE63-DA91-4A22-A320-91E002DE1326/Standard_7SP1_Toolkit/Standard%207%20SP1%20Toolkit.part08.rar
 '@ | Out-File -encoding ASCII "$write_dir/urls_ws7e_toolkit.txt"
 
-	$exe="$write_dir/wget.exe"
-	&$exe --quiet --no-check-certificate --timestamping --limit-rate=2m `
+	&"$write_dir/wget.exe" --quiet --no-check-certificate --timestamping --limit-rate=2m `
 	  --directory-prefix=$write_dir --input-file="$write_dir/urls_ws7e_toolkit.txt"
-	$exe="$write_dir/Standard 7 SP1 Toolkit.part01.exe"
-	&$exe -s -d .
-	$exe="$write_dir/7za.exe"
-	&$exe x -o"Standard 7 SP1 Toolkit" "Standard 7 SP1 Toolkit.iso"
+	&"$write_dir/Standard 7 SP1 Toolkit.part01.exe" -s -d .
+	&"$write_dir/7za.exe" x -o"Standard 7 SP1 Toolkit" "Standard 7 SP1 Toolkit.iso"
 }
 
 $jobs += $j
@@ -70,11 +64,9 @@ $j = {
 http://download.microsoft.com/download/9/A/E/9AE69DD5-BA93-44E0-864E-180F5E700AB4/adk/adksetup.exe
 '@ | Out-File -encoding ASCII "$write_dir/urls_adk.txt"
 
-	$exe="$write_dir/wget.exe"
-	&$exe --quiet --no-check-certificate --timestamping --limit-rate=2m `
+	&"$write_dir/wget.exe" --quiet --no-check-certificate --timestamping --limit-rate=2m `
 	  --directory-prefix=$write_dir --input-file="$write_dir/urls_adk.txt"
-	$exe="$write_dir/adksetup.exe"
-	&$exe /quiet /installpath /features +
+	&"$write_dir/adksetup.exe" /quiet /installpath /features +
 	&$exe /ceip on /log adksetup.log /quiet /features +
 }
 
@@ -94,11 +86,9 @@ https://download.microsoft.com/download/3/3/9/339BE62D-B4B8-4956-B58D-73C4685FC4
 https://download.microsoft.com/download/3/3/9/339BE62D-B4B8-4956-B58D-73C4685FC492/MicrosoftDeploymentToolkit_x86.msi
 '@ | Out-File -encoding ASCII "$write_dir/urls_mdt.txt"
 
-	$exe="$write_dir/wget.exe"
-	&$exe --quiet --no-check-certificate --timestamping --limit-rate=2m `
+&"$write_dir/wget.exe" --quiet --no-check-certificate --timestamping --limit-rate=2m `
 	  --directory-prefix=$write_dir --input-file="$write_dir/urls_mdt.txt"
-	$exe="$write_dir/7za.exe"
-	&$exe x -y -o. "MDT 2013 Documentation.zip"
+	&"$write_dir/7za.exe" x -y -o. "MDT 2013 Documentation.zip"
 }
 
 $jobs += $j
@@ -115,8 +105,7 @@ $j = {
 http://installer-bin.streambox.com/wedu_defaults_install_v1.2.exe
 '@ | Out-File -encoding ASCII "$write_dir/urls_wedu.txt"
 
-	$exe="$write_dir/wget.exe"
-	&$exe --quiet --no-check-certificate --timestamping --limit-rate=2m `
+	&"$write_dir/wget.exe" --quiet --no-check-certificate --timestamping --limit-rate=2m `
 	  --directory-prefix=$write_dir --input-file="$write_dir/urls_wedu.txt"
 }
 
@@ -131,8 +120,7 @@ $j = {
 http://taylors-bucket.s3.amazonaws.com/win7_pro_oem.iso
 '@ | Out-File -encoding ASCII "$write_dir/urls_win7pro.txt"
 
-	$exe="$write_dir/wget.exe"
-	&$exe --quiet --no-check-certificate --timestamping --limit-rate=2m `
+	&"$write_dir/wget.exe" --quiet --no-check-certificate --timestamping --limit-rate=2m `
 	  --directory-prefix=$write_dir --input-file="$write_dir/urls_win7pro.txt"
 }
 
@@ -149,8 +137,7 @@ http://taylors-bucket.s3.amazonaws.com/WS7P_2014-01-01-1045.wim
 http://taylors-bucket.s3.amazonaws.com/mdt.7z
 '@ | Out-File -encoding ASCII "$write_dir/urls_mdt_taylor_made.txt"
 
-	$exe="$write_dir/wget.exe"
-	&$exe --quiet --no-check-certificate --timestamping --limit-rate=2m `
+	&"$write_dir/wget.exe" --quiet --no-check-certificate --timestamping --limit-rate=2m `
 	  --directory-prefix=$write_dir --input-file="$write_dir/urls_mdt_taylor_made.txt"
 }
 
@@ -172,13 +159,10 @@ http://download.microsoft.com/download/1/B/5/1B5FDE63-DA91-4A22-A320-91E002DE132
 http://download.microsoft.com/download/1/B/5/1B5FDE63-DA91-4A22-A320-91E002DE1326/Standard_7SP1_32bit/Standard%207%20SP1%2032bit%20IBW.part5.rar
 '@ | Out-File -encoding ASCII "$write_dir/urls_ws7e.txt"
 
-	$exe="$write_dir/wget.exe"
-	&$exe --quiet --no-check-certificate --timestamping --limit-rate=2m `
+	&"$write_dir/wget.exe" --quiet --no-check-certificate --timestamping --limit-rate=2m `
 	  --directory-prefix=$write_dir --input-file="$write_dir/urls_ws7e.txt"
-	$exe="$write_dir/Standard 7 SP1 32bit IBW.part1.exe"
-	&$exe -s -d .
-	$exe="$write_dir/7za.exe"
-	&$exe x -o"Standard 7 SP1 32bit IBW" "Standard 7 SP1 32bit IBW.iso"
+	&"$write_dir/Standard 7 SP1 32bit IBW.part1.exe" -s -d .
+	&"$write_dir/7za.exe" x -o"Standard 7 SP1 32bit IBW" "Standard 7 SP1 32bit IBW.iso"
 }
 
 $jobs += $j
