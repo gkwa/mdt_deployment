@@ -23,7 +23,7 @@ http://download.microsoft.com/download/1/B/5/1B5FDE63-DA91-4A22-A320-91E002DE132
 
 	$exe="$write_dir\wget.exe"
 	&$exe --quiet --no-check-certificate --timestamping --limit-rate=2m `
-	  --directory-prefix=$write_dir --input-file=$write_dir\urls_ws7e_64bit.txt
+	  --directory-prefix=$write_dir --input-file="$write_dir\urls_ws7e_64bit.txt"
 	$exe="$write_dir\Standard 7 SP1 64bit IBW.part1.exe"
 	&$exe -s -d .
 	$exe="$write_dir\7za.exe"
@@ -51,7 +51,7 @@ http://download.microsoft.com/download/1/B/5/1B5FDE63-DA91-4A22-A320-91E002DE132
 
 	$exe="$write_dir\wget.exe"
 	&$wget --quiet --no-check-certificate --timestamping --limit-rate=2m `
-	  --directory-prefix=$write_dir --input-file=$write_dir\urls_ws7e_toolkit.txt
+	  --directory-prefix=$write_dir --input-file="$write_dir\urls_ws7e_toolkit.txt"
 	$exe="$write_dir\Standard 7 SP1 Toolkit.part01.exe"
 	&$exe -s -d .
 	$exe="$write_dir\7za.exe"
@@ -72,7 +72,7 @@ http://download.microsoft.com/download/9/A/E/9AE69DD5-BA93-44E0-864E-180F5E700AB
 
 	$exe="$write_dir\wget.exe"
 	&$wget --quiet --no-check-certificate --timestamping --limit-rate=2m `
-	  --directory-prefix=$write_dir --input-file=$write_dir\urls_adk.txt
+	  --directory-prefix=$write_dir --input-file="$write_dir\urls_adk.txt"
 	$exe="$write_dir\adksetup.exe"
 	&$exe /quiet /installpath /features +
 	&$exe /ceip on /log adksetup.log /quiet /features +
@@ -94,7 +94,7 @@ https://download.microsoft.com/download/3/3/9/339BE62D-B4B8-4956-B58D-73C4685FC4
 
 	$exe="$write_dir\wget.exe"
 	&$wget --quiet --no-check-certificate --timestamping --limit-rate=2m `
-	  --directory-prefix=$write_dir --input-file=$write_dir\urls_mdt.txt
+	  --directory-prefix=$write_dir --input-file="$write_dir\urls_mdt.txt"
 	$exe="$write_dir\7za.exe"
 	&$exe x -y -o. "MDT 2013 Documentation.zip"
 }
@@ -112,7 +112,7 @@ http://installer-bin.streambox.com/wedu_defaults_install_v1.2.exe
 
 	$exe="$write_dir\wget.exe"
 	&$wget --quiet --no-check-certificate --timestamping --limit-rate=2m `
-	  --directory-prefix=$write_dir --input-file=$write_dir\urls_wedu.txt
+	  --directory-prefix=$write_dir --input-file="$write_dir\urls_wedu.txt"
 }
 
 $jobs += $j
@@ -126,7 +126,7 @@ http://taylors-bucket.s3.amazonaws.com/win7_pro_oem.iso
 
 	$exe="$write_dir\wget.exe"
 	&$exe --quiet --no-check-certificate --timestamping --limit-rate=2m `
-	  --directory-prefix=$write_dir --input-file=$write_dir\urls_win7pro.txt
+	  --directory-prefix=$write_dir --input-file="$write_dir\urls_win7pro.txt"
 }
 
 $jobs += $j
@@ -142,7 +142,7 @@ http://taylors-bucket.s3.amazonaws.com/mdt.7z
 
 	$exe="$write_dir\wget.exe"
 	&$exe --quiet --no-check-certificate --timestamping --limit-rate=2m `
-	  --directory-prefix=$write_dir --input-file=$write_dir\urls_mdt_taylor_made.txt
+	  --directory-prefix=$write_dir --input-file="$write_dir\urls_mdt_taylor_made.txt"
 }
 
 $jobs += $j
@@ -163,7 +163,7 @@ http://download.microsoft.com/download/1/B/5/1B5FDE63-DA91-4A22-A320-91E002DE132
 
 	$exe="$write_dir\wget.exe"
 	&$exe --quiet --no-check-certificate --timestamping --limit-rate=2m `
-	  --directory-prefix=$write_dir --input-file=$write_dir\urls_mdt_taylor_made.txt
+	  --directory-prefix=$write_dir --input-file="$write_dir\urls_mdt_taylor_made.txt"
 	$exe="$write_dir\Standard 7 SP1 32bit IBW.part1.exe"
 	&$exe -s -d .
 	$exe="$write_dir\7za.exe"
