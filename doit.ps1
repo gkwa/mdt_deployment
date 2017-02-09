@@ -167,19 +167,16 @@ http://download.microsoft.com/download/1/B/5/1B5FDE63-DA91-4A22-A320-91E002DE132
 $jobs += $j
 
 
+# ##############################
+# main
+# ##############################
+
 if(!(test-path wget.exe)){
 	Invoke-WebRequest -Uri 'http://installer-bin.streambox.com/wget.exe' -OutFile 'wget.exe'
 }
 
 ./wget --quiet --timestamping --no-check-certificate --limit-rate=2m `
   --directory-prefix=. http://installer-bin.streambox.com/7za.exe
-
-
-
-
-
-
-
 
 $script_dir_base = Split-Path -Parent $MyInvocation.MyCommand.Path
 foreach($job in $jobs)
