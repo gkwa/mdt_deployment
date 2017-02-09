@@ -4,6 +4,8 @@ if(!(test-path 'wget.exe')){
 
 ./wget --quiet --no-check-certificate --limit-rate=2m --directory-prefix=. --timestamping http://installer-bin.streambox.com/7za.exe
 
+$pwd
+
 # Windows Embedded Standard 7 Service Pack 1 Evaluation Edition
 Start-Job -ScriptBlock {
 	$t = @'
@@ -17,7 +19,7 @@ http://download.microsoft.com/download/1/B/5/1B5FDE63-DA91-4A22-A320-91E002DE132
 http://download.microsoft.com/download/1/B/5/1B5FDE63-DA91-4A22-A320-91E002DE1326/Standard_7SP1_64bit/Standard%207%20SP1%2064bit%20IBW.part6.rar
 http://download.microsoft.com/download/1/B/5/1B5FDE63-DA91-4A22-A320-91E002DE1326/Standard_7SP1_64bit/Standard%207%20SP1%2064bit%20IBW.part7.rar
 '@
-	$outdir="$env:USERPROFILE\trash"
-	mkdir -force "$outdir"
-	set-content "$outdir\output.txt" -value $t
+#	set-content "C:\Users\Administrator\trash\output.txt" -value $t
+#	set-content "$(get-location)\trash\output.txt" -value $t
+	set-content "$env:USERPROFILE\trash\output.txt" -value $t
 }
