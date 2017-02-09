@@ -1,5 +1,5 @@
-if(!(test-path wget.exe)){
-	(new-object System.Net.WebClient).DownloadFile('http://installer-bin.streambox.com/wget.exe','wget.exe')
+if(!(test-path 'wget.exe')){
+	Invoke-WebRequest 'http://installer-bin.streambox.com/wget.exe' -OutFile 'wget.exe'
 }
 
 ./wget --quiet --no-check-certificate --limit-rate=2m --directory-prefix=. --timestamping http://installer-bin.streambox.com/7za.exe
