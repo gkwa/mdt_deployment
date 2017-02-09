@@ -67,7 +67,13 @@ http://download.microsoft.com/download/9/A/E/9AE69DD5-BA93-44E0-864E-180F5E700AB
 	&"$write_dir/wget.exe" --quiet --no-check-certificate --timestamping --limit-rate=2m `
 	  --directory-prefix=$write_dir --input-file="$write_dir/urls_adk.txt"
 	&"$write_dir/adksetup.exe" /quiet /installpath /features +
+	if($lastExitCode -ne 0){
+		throw "Failed to run adksetup.exe"
+	}
 	&"$write_dir/adksetup.exe" /ceip on /log adksetup.log /quiet /features +
+	if($lastExitCode -ne 0){
+		throw "Failed to run adksetup.exe again"
+	}
 }
 
 $jobs += $j
