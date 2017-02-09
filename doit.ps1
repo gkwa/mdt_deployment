@@ -2,7 +2,8 @@ if(!(test-path wget.exe)){
 	(new-object System.Net.WebClient).DownloadFile('http://installer-bin.streambox.com/wget.exe','wget.exe')
 }
 
-./wget --quiet --no-check-certificate --limit-rate=2m --directory-prefix=. --timestamping http://installer-bin.streambox.com/7za.exe
+./wget --quiet --timestamping --no-check-certificate --limit-rate=2m `
+  --directory-prefix=. http://installer-bin.streambox.com/7za.exe
 
 $jobs = @()
 
