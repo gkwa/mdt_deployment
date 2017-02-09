@@ -3,7 +3,7 @@ $jobs = @()
 # ##############################
 
 $j = {
-	param($write_dir)
+	param([string]$write_dir)
 
 	@'
 # Windows Embedded Standard 7 Service Pack 1 Evaluation Edition
@@ -29,7 +29,7 @@ $jobs += $j
 
 # Windows Embedded Standard 7 Service Pack 1 Evaluation Edition
 $j = {
-	param($write_dir)
+	param([string]$write_dir)
 
 	@'
 # Windows Embedded Standard 7 Service Pack 1 Evaluation Edition
@@ -57,7 +57,7 @@ $jobs += $j
 # Windows Assessment and Deployment Kit (Windows ADK) for Windows 10
 # http://msdn.microsoft.com/en-us/library/windows/hardware/hh825494.aspx#InstallingNonNetworked
 $j = {
-	param($write_dir)
+	param([string]$write_dir)
 
 	@'
 # Windows Assessment and Deployment Kit (Windows ADK) for Windows 10
@@ -76,7 +76,7 @@ $jobs += $j
 
 # Microsoft deployment toolkit
 $j = {
-	param($write_dir)
+	param([string]$write_dir)
 
 	@'
 http://download.microsoft.com/download/B/F/5/BF5DF779-ED74-4BEC-A07E-9EB25694C6BB/Whats%20New%20in%20MDT%202013%20Guide.docx
@@ -99,7 +99,7 @@ $jobs += $j
 # customized wedu installer wedu_defaults_install_v1.2.exe
 # FIXME: replace this nsis nonsense with powershell
 $j = {
-	param($write_dir)
+	param([string]$write_dir)
 
 	@'
 http://installer-bin.streambox.com/wedu_defaults_install_v1.2.exe
@@ -114,7 +114,7 @@ $jobs += $j
 # ##############################
 
 $j = {
-	param($write_dir)
+	param([string]$write_dir)
 
 	@'
 http://taylors-bucket.s3.amazonaws.com/win7_pro_oem.iso
@@ -129,7 +129,7 @@ $jobs += $j
 # ##############################
 
 $j = {
-	param($write_dir)
+	param([string]$write_dir)
 
 	@'
 http://taylors-bucket.s3.amazonaws.com/WS7P_2013-12-09-1641.wim
@@ -147,7 +147,7 @@ $jobs += $j
 
 # Windows Embedded Standard 7 Service Pack 1 Evaluation Edition
 $j = {
-	param($write_dir)
+	param([string]$write_dir)
 
 	@'
 # Windows Embedded Standard 7 Service Pack 1 Evaluation Edition
