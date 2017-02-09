@@ -24,12 +24,12 @@ http://download.microsoft.com/download/1/B/5/1B5FDE63-DA91-4A22-A320-91E002DE132
 '@ | Out-File -encoding ASCII "$write_dir\urls_ws7e_toolkit.txt"
 
 	$exe="$write_dir\wget.exe"
-	&$wget --quiet --no-check-certificate --timestamping --limit-rate=2m `
+	&$exe --quiet --no-check-certificate --timestamping --limit-rate=2m `
 	  --directory-prefix=$write_dir --input-file="$write_dir\urls_ws7e_toolkit.txt"
 	$exe="$write_dir\Standard 7 SP1 Toolkit.part01.exe"
 	&$exe -s -d .
 	$exe="$write_dir\7za.exe"
-	&$7za x -o"Standard 7 SP1 Toolkit" "Standard 7 SP1 Toolkit.iso"
+	&$exe x -o"Standard 7 SP1 Toolkit" "Standard 7 SP1 Toolkit.iso"
 }
 
 $jobs += $j
