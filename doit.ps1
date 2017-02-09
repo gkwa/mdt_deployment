@@ -7,6 +7,8 @@ if(!(test-path wget.exe)){
 $jobs = @()
 
 $j = {
+	param($write_dir)
+
 	@'
 # Windows Embedded Standard 7 Service Pack 1 Evaluation Edition
 # http://www.microsoft.com/en-us/download/details.aspx?id=11887
@@ -20,7 +22,8 @@ http://download.microsoft.com/download/1/B/5/1B5FDE63-DA91-4A22-A320-91E002DE132
 '@ | Out-File -encoding ASCII "$write_dir/urls_ws7e_64bit.txt"
 
 	$exe="$write_dir/wget.exe"
-	&$exe --quiet --no-check-certificate --limit-rate=2m --directory-prefix=. --timestamping --input-file=urls_ws7e_64bit.txt
+	&$exe --quiet --timestamping --no-check-certificate --limit-rate=2m `
+	  --directory-prefix=$write_dir --input-file=$write_dir/urls_ws7e_64bit.txt
 	$exe="$write_dir/Standard 7 SP1 64bit IBW.part1.exe"
 	&$exe -s -d .
 	$exe="$write_dir/7za.exe"
