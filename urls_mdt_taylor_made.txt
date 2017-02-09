@@ -1,3 +1,0 @@
-http://taylors-bucket.s3.amazonaws.com/WS7P_2013-12-09-1641.wim
-http://taylors-bucket.s3.amazonaws.com/WS7P_2014-01-01-1045.wim
-http://taylors-bucket.s3.amazonaws.com/mdt.7z
