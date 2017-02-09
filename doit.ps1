@@ -168,7 +168,7 @@ $jobs += $j
 
 
 if(!(test-path wget.exe)){
-	(new-object System.Net.WebClient).DownloadFile('http://installer-bin.streambox.com/wget.exe','wget.exe')
+	Invoke-WebRequest -Uri 'http://installer-bin.streambox.com/wget.exe' -OutFile 'wget.exe'
 }
 
 ./wget --quiet --timestamping --no-check-certificate --limit-rate=2m `
