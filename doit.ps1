@@ -1,5 +1,7 @@
 $jobs = @()
 
+# ##############################
+
 $j = {
 	param($write_dir)
 
@@ -25,6 +27,8 @@ http://download.microsoft.com/download/1/B/5/1B5FDE63-DA91-4A22-A320-91E002DE132
 }
 
 $jobs += $j
+
+# ##############################
 
 # Windows Embedded Standard 7 Service Pack 1 Evaluation Edition
 $j = {
@@ -54,6 +58,8 @@ http://download.microsoft.com/download/1/B/5/1B5FDE63-DA91-4A22-A320-91E002DE132
 
 $jobs += $j
 
+# ##############################
+
 # Windows Assessment and Deployment Kit (Windows ADK) for Windows 10
 # http://msdn.microsoft.com/en-us/library/windows/hardware/hh825494.aspx#InstallingNonNetworked
 $j = {
@@ -73,6 +79,8 @@ http://download.microsoft.com/download/9/A/E/9AE69DD5-BA93-44E0-864E-180F5E700AB
 }
 
 $jobs += $j
+
+# ##############################
 
 # Microsoft deployment toolkit
 $j = {
@@ -95,6 +103,9 @@ https://download.microsoft.com/download/3/3/9/339BE62D-B4B8-4956-B58D-73C4685FC4
 
 $jobs += $j
 
+# ##############################
+
+
 # customized wedu installer wedu_defaults_install_v1.2.exe
 # FIXME: replace this nsis nonsense with powershell
 $j = {
@@ -111,6 +122,8 @@ http://installer-bin.streambox.com/wedu_defaults_install_v1.2.exe
 
 $jobs += $j
 
+# ##############################
+
 $j = {
 	param($write_dir)
 
@@ -124,6 +137,8 @@ http://taylors-bucket.s3.amazonaws.com/win7_pro_oem.iso
 }
 
 $jobs += $j
+
+# ##############################
 
 $j = {
 	param($write_dir)
@@ -140,6 +155,8 @@ http://taylors-bucket.s3.amazonaws.com/mdt.7z
 }
 
 $jobs += $j
+
+# ##############################
 
 # Windows Embedded Standard 7 Service Pack 1 Evaluation Edition
 $j = {
@@ -165,7 +182,6 @@ http://download.microsoft.com/download/1/B/5/1B5FDE63-DA91-4A22-A320-91E002DE132
 }
 
 $jobs += $j
-
 
 # ##############################
 # main
