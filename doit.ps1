@@ -159,11 +159,11 @@ http://download.microsoft.com/download/1/B/5/1B5FDE63-DA91-4A22-A320-91E002DE132
 http://download.microsoft.com/download/1/B/5/1B5FDE63-DA91-4A22-A320-91E002DE1326/Standard_7SP1_32bit/Standard%207%20SP1%2032bit%20IBW.part3.rar
 http://download.microsoft.com/download/1/B/5/1B5FDE63-DA91-4A22-A320-91E002DE1326/Standard_7SP1_32bit/Standard%207%20SP1%2032bit%20IBW.part4.rar
 http://download.microsoft.com/download/1/B/5/1B5FDE63-DA91-4A22-A320-91E002DE1326/Standard_7SP1_32bit/Standard%207%20SP1%2032bit%20IBW.part5.rar
-'@ | Out-File -encoding ASCII "$write_dir\urls_mdt_taylor_made.txt"
+'@ | Out-File -encoding ASCII "$write_dir\urls_ws7e.txt"
 
 	$exe="$write_dir\wget.exe"
 	&$exe --quiet --no-check-certificate --timestamping --limit-rate=2m `
-	  --directory-prefix=$write_dir --input-file="$write_dir\urls_mdt_taylor_made.txt"
+	  --directory-prefix=$write_dir --input-file="$write_dir\urls_ws7e.txt"
 	$exe="$write_dir\Standard 7 SP1 32bit IBW.part1.exe"
 	&$exe -s -d .
 	$exe="$write_dir\7za.exe"
