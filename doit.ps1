@@ -86,7 +86,7 @@ https://download.microsoft.com/download/3/3/9/339BE62D-B4B8-4956-B58D-73C4685FC4
 https://download.microsoft.com/download/3/3/9/339BE62D-B4B8-4956-B58D-73C4685FC492/MicrosoftDeploymentToolkit_x86.msi
 '@ | Out-File -encoding ASCII "$write_dir/urls_mdt.txt"
 
-&"$write_dir/wget.exe" --quiet --no-check-certificate --timestamping --limit-rate=2m `
+	&"$write_dir/wget.exe" --quiet --no-check-certificate --timestamping --limit-rate=2m `
 	  --directory-prefix=$write_dir --input-file="$write_dir/urls_mdt.txt"
 	&"$write_dir/7za.exe" x -y -o. "MDT 2013 Documentation.zip"
 }
