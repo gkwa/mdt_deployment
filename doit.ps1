@@ -1,1 +1,1 @@
-Start-Job -ScriptBlock { Set-Content -Path "$pwd\urls_mdt_taylor_made.txt" -Value "test" }
+Start-Job -ScriptBlock { Set-Content -Path "c:\Windows\Temp\urls_mdt_taylor_made.txt" -Value "test" }
