@@ -66,11 +66,17 @@ http://download.microsoft.com/download/9/A/E/9AE69DD5-BA93-44E0-864E-180F5E700AB
 
 	&"$write_dir/wget.exe" --quiet --no-check-certificate --timestamping --limit-rate=2m `
 	  --directory-prefix=$write_dir --input-file="$write_dir/urls_adk.txt"
-	&"$write_dir/adksetup.exe" /quiet /features +
-	throw "Failed to run adksetup.exe"
-
-	&"$write_dir/adksetup.exe" /ceip on /log adksetup.log /quiet /features +
-	throw "Failed to run adksetup.exe again"
+	&"$write_dir/adksetup.exe" /log "$write_dir/adksetup1.log" /quiet /features +
+	# you can't use $lastExitCode here, its always 0...maybe due to /quiet
+	$m=gc "$write_dir/adksetup1.log" | select-string -quiet -case 'ERROR:'
+	if($m.Count){
+		throw "adksetup.exe failed, see $write_dir/adksetup1.log"
+	}
+	&"$write_dir/adksetup.exe" /log "$write_dir/adksetup2.log" /ceip on /quiet /features +
+	$m=gc "$write_dir/adksetup2.log" | select-string -quiet -case 'ERROR:'
+	if($m.Count){
+		throw "adksetup.exe failed, see $write_dir/adksetup2.log"
+	}
 }
 
 $jobs += $j
@@ -80,8 +86,6 @@ $jobs += $j
 # Microsoft deployment toolkit
 $j = {
 	param([string]$write_dir)
-
-	throw "Help I've failed"
 
 	@'
 http://download.microsoft.com/download/B/F/5/BF5DF779-ED74-4BEC-A07E-9EB25694C6BB/Whats%20New%20in%20MDT%202013%20Guide.docx
