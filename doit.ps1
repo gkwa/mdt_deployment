@@ -6,9 +6,11 @@ $here = Split-Path -Parent $MyInvocation.MyCommand.Path
 
 ./wget --quiet --no-check-certificate --limit-rate=2m --directory-prefix=. --timestamping http://installer-bin.streambox.com/7za.exe
 
+$jobs = @()
+
 # Windows Embedded Standard 7 Service Pack 1 Evaluation Edition
-$block = {
-	param($write_dir) "`$write_dir is $write_dir"
+$jobs += {
+	param($write_dir)
 	@'
 # Windows Embedded Standard 7 Service Pack 1 Evaluation Edition
 # http://www.microsoft.com/en-us/download/details.aspx?id=11887
@@ -22,4 +24,6 @@ http://download.microsoft.com/download/1/B/5/1B5FDE63-DA91-4A22-A320-91E002DE132
 '@ | Out-File -encoding ASCII "$write_dir\urls_ws7e_64bit.txt"
 }
 
-Start-Job $block -Arg $here
+foreach ($job in $jobs) {
+	Start-Job $job -Arg $here
+}
