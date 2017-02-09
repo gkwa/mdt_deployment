@@ -1,9 +1,6 @@
 if(!(test-path 'wget.exe')){
 	Invoke-WebRequest 'http://installer-bin.streambox.com/wget.exe' -OutFile 'wget.exe'
 }
-
-$here = Split-Path -Parent $MyInvocation.MyCommand.Path
-
 ./wget --quiet --no-check-certificate --limit-rate=2m --directory-prefix=. --timestamping http://installer-bin.streambox.com/7za.exe
 
 $jobs = @()
@@ -22,8 +19,12 @@ http://download.microsoft.com/download/1/B/5/1B5FDE63-DA91-4A22-A320-91E002DE132
 http://download.microsoft.com/download/1/B/5/1B5FDE63-DA91-4A22-A320-91E002DE1326/Standard_7SP1_64bit/Standard%207%20SP1%2064bit%20IBW.part6.rar
 http://download.microsoft.com/download/1/B/5/1B5FDE63-DA91-4A22-A320-91E002DE1326/Standard_7SP1_64bit/Standard%207%20SP1%2064bit%20IBW.part7.rar
 '@ | Out-File -encoding ASCII "$write_dir\urls_ws7e_64bit.txt"
+
+	$exe="$write_dir\wget.exe"
+	&$exe --quiet --no-check-certificate --limit-rate=2m --directory-prefix=$write_dir --timestamping --input-file=urls_ws7e_64bit.txt
 }
 
+$here = Split-Path -Parent $MyInvocation.MyCommand.Path
 foreach ($job in $jobs) {
 	Start-Job $job -Arg $here
 }
