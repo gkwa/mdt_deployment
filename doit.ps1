@@ -129,7 +129,7 @@ $j = {
 http://taylors-bucket.s3.amazonaws.com/win7_pro_oem.iso
 '@ | Out-File -encoding ASCII "$write_dir/urls_win7pro.txt"
 
-	&"$write_dir/wget.exe" --quiet --no-check-certificate --timestamping --limit-rate=2m `
+	&"$write_dir/wget.exe" --quiet --no-check-certificate --timestamping --limit-rate=20m `
 	  --directory-prefix=$write_dir --input-file="$write_dir/urls_win7pro.txt"
 }
 
@@ -146,7 +146,7 @@ http://taylors-bucket.s3.amazonaws.com/WS7P_2014-01-01-1045.wim
 http://taylors-bucket.s3.amazonaws.com/mdt.7z
 '@ | Out-File -encoding ASCII "$write_dir/urls_mdt_taylor_made.txt"
 
-	&"$write_dir/wget.exe" --quiet --no-check-certificate --timestamping --limit-rate=2m `
+	&"$write_dir/wget.exe" --quiet --no-check-certificate --timestamping --limit-rate=20m `
 	  --directory-prefix=$write_dir --input-file="$write_dir/urls_mdt_taylor_made.txt"
 }
 
