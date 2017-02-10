@@ -21,6 +21,11 @@ http://download.microsoft.com/download/1/B/5/1B5FDE63-DA91-4A22-A320-91E002DE132
 	  --directory-prefix=$write_dir --input-file="$write_dir/urls_ws7e_64bit.txt"
 	&"$write_dir/Standard 7 SP1 64bit IBW.part1.exe" -O+ -s -d .
 	&"$write_dir/7za.exe" x -o"Standard 7 SP1 64bit IBW" "Standard 7 SP1 64bit IBW.iso"
+
+	if(test-path "Standard 7 SP1 64bit IBW.iso"){
+		mkdir -force artifacts
+		move-item "Standard 7 SP1 64bit IBW.part*" urls_ws7e_64bit.txt artifacts
+	}
 }
 
 $jobs += $j
@@ -48,6 +53,11 @@ http://download.microsoft.com/download/1/B/5/1B5FDE63-DA91-4A22-A320-91E002DE132
 	  --directory-prefix=$write_dir --input-file="$write_dir/urls_ws7e_toolkit.txt"
 	&"$write_dir/Standard 7 SP1 Toolkit.part01.exe" -O+ -s -d .
 	&"$write_dir/7za.exe" x -o"Standard 7 SP1 Toolkit" "Standard 7 SP1 Toolkit.iso"
+
+	if(test-path "Standard 7 SP1 Toolkit.iso"){
+		mkdir -force artifacts
+		move-item "Standard 7 SP1 Toolkit.part*" urls_ws7e_toolkit.txt artifacts
+	}
 }
 
 $jobs += $j
@@ -172,6 +182,11 @@ http://download.microsoft.com/download/1/B/5/1B5FDE63-DA91-4A22-A320-91E002DE132
 	  --directory-prefix=$write_dir --input-file="$write_dir/urls_ws7e.txt"
 	&"$write_dir/Standard 7 SP1 32bit IBW.part1.exe" -O+ -s -d .
 	&"$write_dir/7za.exe" x -o"Standard 7 SP1 32bit IBW" "Standard 7 SP1 32bit IBW.iso"
+
+	if(test-path "Standard 7 SP1 32bit IBW.iso"){
+		mkdir -force artifacts
+		move-item "Standard 7 SP1 32bit IBW.part*" urls_ws7e.txt artifacts
+	}
 }
 
 $jobs += $j
