@@ -5,9 +5,7 @@ $jobs = @()
 $j = {
 	param([string]$write_dir)
 
-	if(!(test-path "Standard 7 SP1 64bit IBW.iso")){
-
-		@'
+	@'
 # Windows Embedded Standard 7 Service Pack 1 Evaluation Edition
 # http://www.microsoft.com/en-us/download/details.aspx?id=11887
 http://download.microsoft.com/download/1/B/5/1B5FDE63-DA91-4A22-A320-91E002DE1326/Standard_7SP1_64bit/Standard 7 SP1 64bit IBW.part1.exe
@@ -19,11 +17,12 @@ http://download.microsoft.com/download/1/B/5/1B5FDE63-DA91-4A22-A320-91E002DE132
 http://download.microsoft.com/download/1/B/5/1B5FDE63-DA91-4A22-A320-91E002DE1326/Standard_7SP1_64bit/Standard 7 SP1 64bit IBW.part7.rar
 '@ | Out-File -encoding ASCII "$write_dir/urls_ws7e_64bit.txt"
 
-		&"$write_dir/wget.exe" --quiet --no-check-certificate --timestamping --limit-rate=2m `
-		  --directory-prefix=$write_dir --input-file="$write_dir/urls_ws7e_64bit.txt"
-		&"$write_dir/Standard 7 SP1 64bit IBW.part1.exe" -O+ -s -d .
-		&"$write_dir/7za.exe" x -o"Standard 7 SP1 64bit IBW" "Standard 7 SP1 64bit IBW.iso"
+	&"$write_dir/wget.exe" --quiet --no-check-certificate --timestamping --limit-rate=2m `
+	  --directory-prefix=$write_dir --input-file="$write_dir/urls_ws7e_64bit.txt"
+	&"$write_dir/Standard 7 SP1 64bit IBW.part1.exe" -O+ -s -d .
+	&"$write_dir/7za.exe" x -o"Standard 7 SP1 64bit IBW" "Standard 7 SP1 64bit IBW.iso"
 
+	if(test-path "Standard 7 SP1 64bit IBW.iso"){
 		mkdir -force artifacts
 		move-item "Standard 7 SP1 64bit IBW.part*" urls_ws7e_64bit.txt artifacts
 	}
@@ -37,9 +36,7 @@ $jobs += $j
 $j = {
 	param([string]$write_dir)
 
-	if(!(test-path "Standard 7 SP1 Toolkit.iso")){
-
-		@'
+	@'
 # Windows Embedded Standard 7 Service Pack 1 Evaluation Edition
 # http://www.microsoft.com/en-us/download/details.aspx?id=11887
 http://download.microsoft.com/download/1/B/5/1B5FDE63-DA91-4A22-A320-91E002DE1326/Standard_7SP1_Toolkit/Standard 7 SP1 Toolkit.part01.exe
@@ -52,11 +49,12 @@ http://download.microsoft.com/download/1/B/5/1B5FDE63-DA91-4A22-A320-91E002DE132
 http://download.microsoft.com/download/1/B/5/1B5FDE63-DA91-4A22-A320-91E002DE1326/Standard_7SP1_Toolkit/Standard 7 SP1 Toolkit.part08.rar
 '@ | Out-File -encoding ASCII "$write_dir/urls_ws7e_toolkit.txt"
 
-		&"$write_dir/wget.exe" --quiet --no-check-certificate --timestamping --limit-rate=2m `
-		  --directory-prefix=$write_dir --input-file="$write_dir/urls_ws7e_toolkit.txt"
-		&"$write_dir/Standard 7 SP1 Toolkit.part01.exe" -O+ -s -d .
-		&"$write_dir/7za.exe" x -o"Standard 7 SP1 Toolkit" "Standard 7 SP1 Toolkit.iso"
+	&"$write_dir/wget.exe" --quiet --no-check-certificate --timestamping --limit-rate=2m `
+	  --directory-prefix=$write_dir --input-file="$write_dir/urls_ws7e_toolkit.txt"
+	&"$write_dir/Standard 7 SP1 Toolkit.part01.exe" -O+ -s -d .
+	&"$write_dir/7za.exe" x -o"Standard 7 SP1 Toolkit" "Standard 7 SP1 Toolkit.iso"
 
+	if(test-path "Standard 7 SP1 Toolkit.iso"){
 		mkdir -force artifacts
 		move-item "Standard 7 SP1 Toolkit.part*" urls_ws7e_toolkit.txt artifacts
 	}
@@ -158,8 +156,8 @@ http://taylors-bucket.s3.amazonaws.com/WS7P_2014-01-01-1045.wim
 http://taylors-bucket.s3.amazonaws.com/mdt.7z
 '@ | Out-File -encoding ASCII "$write_dir/urls_mdt_taylor_made.txt"
 
-&"$write_dir/wget.exe" --quiet --no-check-certificate --timestamping --limit-rate=2m `
-  --directory-prefix=$write_dir --input-file="$write_dir/urls_mdt_taylor_made.txt"
+	&"$write_dir/wget.exe" --quiet --no-check-certificate --timestamping --limit-rate=2m `
+	  --directory-prefix=$write_dir --input-file="$write_dir/urls_mdt_taylor_made.txt"
 }
 
 $jobs += $j
@@ -178,7 +176,6 @@ http://download.microsoft.com/download/1/B/5/1B5FDE63-DA91-4A22-A320-91E002DE132
 http://download.microsoft.com/download/1/B/5/1B5FDE63-DA91-4A22-A320-91E002DE1326/Standard_7SP1_32bit/Standard 7 SP1 32bit IBW.part3.rar
 http://download.microsoft.com/download/1/B/5/1B5FDE63-DA91-4A22-A320-91E002DE1326/Standard_7SP1_32bit/Standard 7 SP1 32bit IBW.part4.rar
 http://download.microsoft.com/download/1/B/5/1B5FDE63-DA91-4A22-A320-91E002DE1326/Standard_7SP1_32bit/Standard 7 SP1 32bit IBW.part5.rar
-
 '@ | Out-File -encoding ASCII "$write_dir/urls_ws7e.txt"
 
 	&"$write_dir/wget.exe" --quiet --no-check-certificate --timestamping --limit-rate=2m `
