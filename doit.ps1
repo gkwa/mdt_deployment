@@ -19,7 +19,9 @@ http://download.microsoft.com/download/1/B/5/1B5FDE63-DA91-4A22-A320-91E002DE132
 
 	&"$write_dir/wget.exe" --quiet --no-check-certificate --timestamping --limit-rate=2m `
 	  --directory-prefix=$write_dir --input-file="$write_dir/urls_ws7e_64bit.txt"
-	&rar x -y "$write_dir/Standard 7 SP1 64bit IBW.part1.exe" "$write_dir/"
+	if(!(test-path "$write_dir/Standard 7 SP1 64bit IBW.iso")){
+		&rar x -y "$write_dir/Standard 7 SP1 64bit IBW.part1.exe" "$write_dir/"
+	}
 	&7z x -o"$write_dir/Standard 7 SP1 64bit IBW" "Standard 7 SP1 64bit IBW.iso"
 }
 
@@ -46,7 +48,9 @@ http://download.microsoft.com/download/1/B/5/1B5FDE63-DA91-4A22-A320-91E002DE132
 
 	&"$write_dir/wget.exe" --quiet --no-check-certificate --timestamping --limit-rate=2m `
 	  --directory-prefix=$write_dir --input-file="$write_dir/urls_ws7e_toolkit.txt"
-	&rar x -y "$write_dir/Standard 7 SP1 Toolkit.part01.exe" "$write_dir/"
+	if(!(test-path "$write_dir/Standard 7 SP1 Toolkit.iso")){
+		&rar x -y "$write_dir/Standard 7 SP1 Toolkit.part01.exe" "$write_dir/"
+	}
 	&7z x -o"$write_dir/Standard 7 SP1 Toolkit" "Standard 7 SP1 Toolkit.iso"
 }
 
@@ -170,7 +174,9 @@ http://download.microsoft.com/download/1/B/5/1B5FDE63-DA91-4A22-A320-91E002DE132
 
 	&"$write_dir/wget.exe" --quiet --no-check-certificate --timestamping --limit-rate=2m `
 	  --directory-prefix=$write_dir --input-file="$write_dir/urls_ws7e.txt"
-	&rar x -y "$write_dir/Standard 7 SP1 32bit IBW.part1.exe" "$write_dir/"
+	if(!(test-path "$write_dir/Standard 7 SP1 32bit IBW.iso")){
+		&rar x -y "$write_dir/Standard 7 SP1 32bit IBW.part1.exe" "$write_dir/"
+	}
 	&7z x -o"$write_dir/Standard 7 SP1 32bit IBW" "Standard 7 SP1 32bit IBW.iso"
 }
 
