@@ -5,9 +5,9 @@ usage:
 set-executionpolicy bypass -force
 iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 
-(new-object System.Net.WebClient).DownloadFile('http://installer-bin.streambox.com/wget.exe','wget.exe')
-rm alias:\wget
-./wget --timestamping --quiet --no-check-certificate https://raw.githubusercontent.com/TaylorMonacelli/mdt_deployment/tm/use_powershell_instead/mdtdown.ps1
+$url='https://raw.githubusercontent.com/TaylorMonacelli/mdt_deployment/tm/use_powershell_instead/mdtdown.ps1'
+$output='mdtdown.ps1'
+(New-Object System.Net.WebClient).DownloadFile($url, $output)
 . .\mdtdown.ps1
 
 #>
@@ -38,7 +38,10 @@ http://download.microsoft.com/download/1/B/5/1B5FDE63-DA91-4A22-A320-91E002DE132
 		  --directory-prefix=$write_dir --input-file="$write_dir/urls_ws7e_64bit.txt"
 		&rar x -y "$write_dir/Standard 7 SP1 64bit IBW.part1.exe" "$write_dir/"
 	}
-	&7z x -o"$write_dir/Standard 7 SP1 64bit IBW" "Standard 7 SP1 64bit IBW.iso"
+	set-psdebug -trace 2
+	set-alias sz (Get-Command 7z).Source
+	&sz x -y -o"$write_dir\Standard 7 SP1 64bit IBW" "Standard 7 SP1 64bit IBW.iso"
+	set-psdebug -trace 0
 }
 
 $jobs += $j
@@ -68,7 +71,7 @@ http://download.microsoft.com/download/1/B/5/1B5FDE63-DA91-4A22-A320-91E002DE132
 		  --directory-prefix=$write_dir --input-file="$write_dir/urls_ws7e_toolkit.txt"
 		&rar x -y "$write_dir/Standard 7 SP1 Toolkit.part01.exe" "$write_dir/"
 	}
-	&7z x -o"$write_dir/Standard 7 SP1 Toolkit" "Standard 7 SP1 Toolkit.iso"
+	&7z x -y -o"$write_dir/Standard 7 SP1 Toolkit" "Standard 7 SP1 Toolkit.iso"
 }
 
 $jobs += $j
@@ -195,7 +198,7 @@ http://download.microsoft.com/download/1/B/5/1B5FDE63-DA91-4A22-A320-91E002DE132
 		  --directory-prefix=$write_dir --input-file="$write_dir/urls_ws7e.txt"
 		&rar x -y "$write_dir/Standard 7 SP1 32bit IBW.part1.exe" "$write_dir/"
 	}
-	&7z x -o"$write_dir/Standard 7 SP1 32bit IBW" "Standard 7 SP1 32bit IBW.iso"
+	&7z x -y -o"$write_dir/Standard 7 SP1 32bit IBW" "Standard 7 SP1 32bit IBW.iso"
 }
 
 $jobs += $j
@@ -204,13 +207,17 @@ $jobs += $j
 # main
 # ##############################
 
-cinst --yes winrar 7zip.install
+cinst --yes winrar 7zip.install wget
+
+if(test-path alias:\wget){
+	rm alias:\wget
+}
+
 Import-Module "$env:ChocolateyInstall\helpers\chocolateyInstaller.psm1" -Force
+
 $path = gci -ea 0 "${env:SYSTEMDRIVE}/Prog*/winrar/rar.exe" | select -exp fullname
 Install-BinFile -Path $path -Name rar
 
-cinst --yes winrar 7zip.install
-Import-Module "$env:ChocolateyInstall\helpers\chocolateyInstaller.psm1" -Force
 $path = gci -ea 0 "${env:SYSTEMDRIVE}/Prog*/7-zip/7z.exe" | select -exp fullname
 Install-BinFile -Path $path -Name 7z
 
