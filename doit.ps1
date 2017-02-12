@@ -215,9 +215,6 @@ if(!(test-path wget.exe)){
 	Invoke-WebRequest -Uri 'http://installer-bin.streambox.com/wget.exe' -OutFile 'wget.exe'
 }
 
-./wget --quiet --timestamping --no-check-certificate --limit-rate=2m `
-  --directory-prefix=. http://installer-bin.streambox.com/7za.exe
-
 $script_dir_base = Split-Path -Parent $MyInvocation.MyCommand.Path
 foreach($job in $jobs)
 {
