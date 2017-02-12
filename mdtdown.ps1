@@ -13,8 +13,4 @@ $output='mdtdown.ps1'
 #>
 
 $write_dir = Split-Path -Parent $MyInvocation.MyCommand.Path
-
-	set-psdebug -trace 2
-	set-alias sz (Get-Command 7z).Source
-	&sz x -y -o"$write_dir\Standard 7 SP1 64bit IBW" "Standard 7 SP1 64bit IBW.iso"
-	set-psdebug -trace 0
+&7z x -y -o"$write_dir\Standard 7 SP1 64bit IBW" "Standard 7 SP1 64bit IBW.iso"
