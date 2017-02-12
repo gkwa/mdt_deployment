@@ -1,3 +1,18 @@
+<#
+
+usage:
+# install chocolatey first
+set-executionpolicy bypass -force
+iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+
+(new-object System.Net.WebClient).DownloadFile('http://installer-bin.streambox.com/wget.exe','wget.exe')
+rm alias:\wget
+./wget --timestamping --quiet --no-check-certificate https://raw.githubusercontent.com/TaylorMonacelli/mdt_deployment/tm/use_powershell_instead/doit.ps1
+. .\doit.ps1
+
+#>
+
+
 $jobs = @()
 
 # ##############################
