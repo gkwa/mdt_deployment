@@ -20,7 +20,7 @@ http://download.microsoft.com/download/1/B/5/1B5FDE63-DA91-4A22-A320-91E002DE132
 	&"$write_dir/wget.exe" --quiet --no-check-certificate --timestamping --limit-rate=2m `
 	  --directory-prefix=$write_dir --input-file="$write_dir/urls_ws7e_64bit.txt"
 	&rar x -y "$write_dir/Standard 7 SP1 64bit IBW.part1.exe" "$write_dir/"
-	&"$write_dir/7za.exe" x -o"Standard 7 SP1 64bit IBW" "Standard 7 SP1 64bit IBW.iso"
+	&7z x -o"$write_dir/Standard 7 SP1 64bit IBW" "Standard 7 SP1 64bit IBW.iso"
 }
 
 $jobs += $j
@@ -47,7 +47,7 @@ http://download.microsoft.com/download/1/B/5/1B5FDE63-DA91-4A22-A320-91E002DE132
 	&"$write_dir/wget.exe" --quiet --no-check-certificate --timestamping --limit-rate=2m `
 	  --directory-prefix=$write_dir --input-file="$write_dir/urls_ws7e_toolkit.txt"
 	&rar x -y "$write_dir/Standard 7 SP1 Toolkit.part01.exe" "$write_dir/"
-	&"$write_dir/7za.exe" x -o"Standard 7 SP1 Toolkit" "Standard 7 SP1 Toolkit.iso"
+	&7z x -o"$write_dir/Standard 7 SP1 Toolkit" "Standard 7 SP1 Toolkit.iso"
 }
 
 $jobs += $j
@@ -97,7 +97,7 @@ https://download.microsoft.com/download/3/3/9/339BE62D-B4B8-4956-B58D-73C4685FC4
 
 	&"$write_dir/wget.exe" --quiet --no-check-certificate --timestamping --limit-rate=2m `
 	  --directory-prefix=$write_dir --input-file="$write_dir/urls_mdt.txt"
-	&"$write_dir/7za.exe" x -y -o. "MDT 2013 Documentation.zip"
+	&7z x -y -o. "MDT 2013 Documentation.zip"
 }
 
 $jobs += $j
@@ -171,7 +171,7 @@ http://download.microsoft.com/download/1/B/5/1B5FDE63-DA91-4A22-A320-91E002DE132
 	&"$write_dir/wget.exe" --quiet --no-check-certificate --timestamping --limit-rate=2m `
 	  --directory-prefix=$write_dir --input-file="$write_dir/urls_ws7e.txt"
 	&rar x -y "$write_dir/Standard 7 SP1 32bit IBW.part1.exe" "$write_dir/"
-	&"$write_dir/7za.exe" x -o"Standard 7 SP1 32bit IBW" "Standard 7 SP1 32bit IBW.iso"
+	&7z x -o"$write_dir/Standard 7 SP1 32bit IBW" "Standard 7 SP1 32bit IBW.iso"
 }
 
 $jobs += $j
@@ -180,10 +180,15 @@ $jobs += $j
 # main
 # ##############################
 
-cinst --yes winrar
+cinst --yes winrar 7zip.install
 Import-Module "$env:ChocolateyInstall\helpers\chocolateyInstaller.psm1" -Force
 $path = gci -ea 0 "${env:SYSTEMDRIVE}/Prog*/winrar/rar.exe" | select -exp fullname
 Install-BinFile -Path $path -Name rar
+
+cinst --yes winrar 7zip.install
+Import-Module "$env:ChocolateyInstall\helpers\chocolateyInstaller.psm1" -Force
+$path = gci -ea 0 "${env:SYSTEMDRIVE}/Prog*/7-zip/7z.exe" | select -exp fullname
+Install-BinFile -Path $path -Name 7z
 
 if(!(test-path wget.exe)){
 	Invoke-WebRequest -Uri 'http://installer-bin.streambox.com/wget.exe' -OutFile 'wget.exe'
