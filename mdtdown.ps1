@@ -226,7 +226,7 @@ Import-Module "$env:ChocolateyInstall\helpers\chocolateyInstaller.psm1" -Force
 $path = gci -ea 0 "${env:SYSTEMDRIVE}/Prog*/winrar/rar.exe" | select -exp fullname
 Install-BinFile -Path $path -Name rar
 
-$path = gci -ea 0 "${env:SYSTEMDRIVE}/Prog*/7-zip/7z.exe" | select -exp fullname
+$path = gci -ea 0 "${env:SYSTEMDRIVE}/Prog*/7-zip/7z.exe" | select -first 1 | select -exp fullname
 Install-BinFile -Path $path -Name 7z
 
 if(!(test-path wget.exe)){
