@@ -12,6 +12,12 @@ rm alias:\wget
 
 #>
 
+if([System.Environment]::OSVersion.Version -lt [version]'10.0.1607.0'){
+    $message="Note: You must use Windows 10, version 1607 with `
+	  this version of the ADK, see https://goo.gl/KQ5ib4"
+    Write-Error $message
+    Exit 1
+}
 
 $jobs = @()
 
